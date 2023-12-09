@@ -15,20 +15,7 @@ class Board:
 
     def render(self, screen: pygame.Surface):
         pass
-        # for row in range(len(self.board)):
-        #     for col in range(len(self.board[row])):
-        #         if self.board[row][col] == 0:
-        #             pygame.draw.rect(screen, (255, 255, 255), 
-        #                             (col * self.cell_size + self.left, 
-        #                             row * self.cell_size + self.top, 
-        #                             self.cell_size, self.cell_size),
-        #                             width=1)
-        #         if self.board[row][col] == 1:
-        #             pygame.draw.rect(screen, (0, 255, 0), 
-        #                             (col * self.cell_size + self.left, 
-        #                             row * self.cell_size + self.top, 
-        #                             self.cell_size, self.cell_size))
-
+    
     def get_click(self, mouse_pos):
         cell = self.get_cell(mouse_pos)
         self.on_click(cell)
