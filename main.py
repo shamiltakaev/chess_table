@@ -1,19 +1,32 @@
+# https://github.com/shamiltakaev/chess_table
 import pygame
 from board import Board
+from life import Life
 
 if __name__ == '__main__':
     pygame.init()
-    size = width, height = 400, 400
+    size = width, height = 1000, 1000
+    clock = pygame.time.Clock()
+    fps = 10
+
     screen = pygame.display.set_mode(size)
-    board = Board(4, 3)
-    board.set_view(100, 100, 50)
+    life = Life(10, 10)
+    life.set_view(100, 100, 50)
     running = True
+    is_play = False
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running = False    
+                running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-                board.get_click(event.pos)            
+                life.get_click(event.pos)
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    is_play = not is_play
         screen.fill((0, 0, 0))
-        board.render(screen)
+        life.render(screen)
+        if is_play:
+            life.next_move()
+        clock.tick(fps)
+
         pygame.display.flip()
