@@ -18,14 +18,16 @@ if __name__ == '__main__':
     t_speed = speed
     running = True
     is_play = False
+    is_touch = False
+
     while running:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
             if event.type == pygame.MOUSEBUTTONDOWN:
-
                 if event.button == 1:
                     life.get_click(event.pos)
+                    is_touch = True
                 elif event.button == 4:
                     speed //= 2
                 elif event.button == 5:
@@ -36,6 +38,10 @@ if __name__ == '__main__':
             if event.type == MYEVENTTYPE:
                 if is_play:
                     life.next_move()
+            if event.type == pygame.MOUSEMOTION and is_touch:
+                life.get_click(event.pos)
+            if event.type == pygame.MOUSEBUTTONUP and event.button == 1:
+                is_touch = False
         screen.fill((0, 0, 0))
         if t_speed != speed:
             t_speed = speed
