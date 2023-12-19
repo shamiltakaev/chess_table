@@ -47,8 +47,6 @@ if __name__ == '__main__':
     running = True
     all_sprites = pygame.sprite.Group()
     Arrow(all_sprites)
-    tick = pygame.USEREVENT
-    pygame.time.set_timer(tick, 300)
 
     while running:
         screen.fill((255, 255, 255))
